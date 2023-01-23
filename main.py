@@ -48,6 +48,5 @@ if st.button('Make Prediction'):
     feature_to_predict = make_inp(inp_abo, inp_day, inp_month)
     prediction = model.predict(feature_to_predict)
     print('Your predicted HbA1c', prediction)
-    name = name
     st.write(f'{inp_name} predicted Hba1c is: {prediction} mg/dl')
 
