@@ -5,15 +5,10 @@ import numpy as np
 
 st.header('Predict HbA1c Level by your Blood Group and Birthday (Just for FUN!)')
 st.text_input('Enter you Name:', key="name")
-data = pd.read_csv('data/lab_blood_dob.csv')
 
 #Load model
 model = xgb.XGBRegressor(objective='reg:squarederror', learning_rate=0.1, max_depth=3, n_estimators=100)
 model.load_model('hba1c_model.json')
-
-#Show data
-if st.checkbox('Show DataFrame'):
-    data
 
 
 st.subheader('Select your blood group')
@@ -53,5 +48,6 @@ if st.button('Make Prediction'):
     feature_to_predict = make_inp(inp_abo, inp_day, inp_month)
     prediction = model.predict(feature_to_predict)
     print('Your predicted HbA1c', prediction)
+    name = name
     st.write(f'{name} predicted Hba1c is: {prediction} mg/dl')
 
